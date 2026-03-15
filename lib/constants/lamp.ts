@@ -43,4 +43,4 @@ export default [
     availableColor: [],
     availableWood: ["plywood", "linoleum"],
   },
-] satisfies LampData[];
+] as LampData[];
