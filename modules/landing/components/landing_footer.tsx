@@ -6,7 +6,7 @@ export default function LandingFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info  */}
           <div className="space-y-4 col-span-2">
-            <h3 className="text-xl font-semibold">Lumina Craftwood</h3>
+            <h3 className="text-xl font-semibold">Lumina</h3>
             <p className="text-sm opacity-90">
               Handcrafted wooden lamps that bring natural warmth and modern
               design to your space.
