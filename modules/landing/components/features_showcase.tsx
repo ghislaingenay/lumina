@@ -72,7 +72,6 @@ export default function FeaturesShowcase() {
               width={400}
               height={400}
               src="/wood_lamp.webp"
-              loading="eager"
               preload
               alt="Wood Lamp"
               className="size-full object-cover rounded-2xl"
