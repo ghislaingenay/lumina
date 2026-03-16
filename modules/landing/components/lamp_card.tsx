@@ -20,7 +20,7 @@ type LampCardProps = LampProps & {
 export function LampCard({
   lampName = "Mori No. 3",
   woodName = "White Oak",
-  imageSrc = "/wood_lamp.jpg",
+  imageSrc = "/wood_lamp.webp",
   blurCard = false,
   onEnter,
   onLeave,

@@ -10,18 +10,18 @@ export default function LampExample() {
 
   const imageDetails = {
     plywood: {
-      lampSrc: "/landing_features/lamp/plywood_lamp.png",
-      materialSrc: "/landing_features/material/plywood.jpg",
+      lampSrc: "/landing_features/lamp/plywood_lamp.webp",
+      materialSrc: "/landing_features/material/plywood.webp",
       altText: "Plywood lamp and material sample",
     },
     dotted_wood: {
-      lampSrc: "/landing_features/lamp/dotted_wood_lamp.png",
-      materialSrc: "/landing_features/material/dotted_wood.jpg",
+      lampSrc: "/landing_features/lamp/dotted_wood_lamp.webp",
+      materialSrc: "/landing_features/material/dotted_wood.webp",
       altText: "Dotted wood lamp and material sample",
     },
     draft_wood: {
-      lampSrc: "/landing_features/lamp/draft_wood_lamp.png",
-      materialSrc: "/landing_features/material/draft_wood.jpg",
+      lampSrc: "/landing_features/lamp/draft_wood_lamp.webp",
+      materialSrc: "/landing_features/material/draft_wood.webp",
       altText: "Draft wood lamp and material sample",
     },
   };

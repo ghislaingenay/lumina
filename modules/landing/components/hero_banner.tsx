@@ -59,7 +59,7 @@ export default function HeroBanner() {
       {/* Image */}
       <Image
         ref={backgroundImageRef}
-        src="/landing.jpg"
+        src="/landing.webp"
         alt="Landing"
         width={200}
         height={200}

@@ -19,9 +19,9 @@ export interface WoodOption {
 const getTexture = (wood: WoodType): WoodTexture => {
   const baseURL = `textures/woods/${wood}`;
   return {
-    color: `${baseURL}/${wood}_diff_1k.jpg`,
-    normal: `${baseURL}/${wood}_nor_gl_1k.jpg`,
-    ao: `${baseURL}/${wood}_arm_1k.jpg`,
+    color: `${baseURL}/${wood}_diff_1k.ktx2`,
+    normal: `${baseURL}/${wood}_nor_gl_1k.ktx2`,
+    ao: `${baseURL}/${wood}_arm_1k.ktx2`,
   };
 };
 

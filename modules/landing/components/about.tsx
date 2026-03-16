@@ -18,42 +18,23 @@ export default function AboutUs() {
     const ceilingLamps = section.querySelector("img") as HTMLImageElement;
     const h4Element = section.querySelector("h4") as HTMLElement;
 
-    const splitText = new SplitText(h4Element, {
-      type: "lines",
-    });
+    const splitText = new SplitText(h4Element, { type: "lines" });
 
-    // Set initial state for lines
-    gsap.set(splitText.lines, {
-      opacity: 0,
-      y: 20,
-    });
+    gsap.set(splitText.lines, { opacity: 0, y: 20 });
 
-    // Create ONE ScrollTrigger for both animations
-    const scrollTriggerConfig = {
-      trigger: section,
-      start: "top top",
-      end: () => `+=${section.offsetHeight}`,
-      scrub: 2,
-      pin: true,
-      anticipatePin: 1,
-    };
-
-    // Animate ceiling lamps
-    gsap.to(ceilingLamps, {
-      xPercent: 100,
-      scrollTrigger: scrollTriggerConfig,
-    });
-
-    // Animate lines
-    gsap.to(splitText.lines, {
-      opacity: 1,
-      y: 0,
-      stagger: 0.1,
+    const tl = gsap.timeline({
       scrollTrigger: {
-        ...scrollTriggerConfig,
-        pin: false,
+        trigger: section,
+        start: "top top",
+        end: () => `+=${section.offsetHeight}`,
+        scrub: 2,
+        pin: true,
+        anticipatePin: 1,
       },
     });
+
+    tl.to(ceilingLamps, { xPercent: 100 }, 0);
+    tl.to(splitText.lines, { opacity: 1, y: 0, stagger: 0.1 }, 0);
   });
 
   return (
@@ -62,7 +43,7 @@ export default function AboutUs() {
       className="relative h-screen w-full overflow-hidden"
     >
       <Image
-        src="/ceiling_lamps.jpg"
+        src="/ceiling_lamps.webp"
         alt="Ceiling Lamps"
         width={800}
         height={600}
@@ -72,13 +53,6 @@ export default function AboutUs() {
         id="presentation"
         className="w-full relative origin-center flex justify-center items-center"
       >
-        {/* <Image
-          src="/wood_texture.jpg"
-          alt="Wood texture background"
-          width={800}
-          height={600}
-          className="absolute inset-0 object-cover opacity-10 h-screen w-full"
-        /> */}
         <div className="max-w-xl space-y-4 px-4 h-screen flex flex-col justify-center">
           <h3 className="text-center text-2xl md:text-3xl lg:text-4xl">
             Lumina

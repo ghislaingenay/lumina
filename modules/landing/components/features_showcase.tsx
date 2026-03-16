@@ -71,7 +71,7 @@ export default function FeaturesShowcase() {
             <Image
               width={400}
               height={400}
-              src="/wood_lamp.jpg"
+              src="/wood_lamp.webp"
               loading="eager"
               alt="Wood Lamp"
               className="size-full object-cover rounded-2xl"
