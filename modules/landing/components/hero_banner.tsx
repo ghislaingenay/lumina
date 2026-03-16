@@ -58,7 +58,7 @@ export default function HeroBanner() {
     >
       {/* Image */}
       <Image
-      preload
+        preload
         ref={backgroundImageRef}
         src="/landing.webp"
         alt="Landing"
@@ -76,7 +76,7 @@ export default function HeroBanner() {
       </h1>
       <h2
         ref={secondaryHeadingRef}
-        className="max-w-3xl mx-auto text-md lg:text-lg px-4 text-primary mb-8"
+        className="max-w-3xl mx-auto text-base lg:text-lg px-4 text-primary mb-8"
       >
         Handcrafted wooden bedside lamps designed for your unique style
       </h2>
