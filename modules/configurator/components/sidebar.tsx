@@ -26,10 +26,13 @@ export default function ConfiguratorSidebar() {
 
   return (
     <>
-      {/* Toggle Button */}
+      {/* Toggle Button — top-right on desktop, bottom-center on mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-80 cursor-pointer bg-secondary text-primary px-4 py-2 rounded-lg shadow-lg hover:opacity-90 transition-opacity"
+        className="fixed z-80 cursor-pointer bg-secondary text-primary shadow-lg hover:opacity-90 transition-opacity
+          top-4 right-4 px-4 py-2 rounded-lg
+          md:top-4 md:right-4 md:rounded-lg md:px-4 md:py-2
+          max-md:bottom-4 max-md:left-1/2 max-md:-translate-x-1/2 max-md:top-auto max-md:right-auto max-md:rounded-full max-md:px-6 max-md:py-3 max-md:flex max-md:items-center max-md:gap-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +54,34 @@ export default function ConfiguratorSidebar() {
             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
           />
         </svg>
+        <span className="md:hidden text-sm font-semibold">Customize</span>
       </button>
 
-      {/* Sidebar Panel */}
+      {/* Backdrop (mobile only) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-90 bg-black/40 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Sidebar Panel — right drawer on desktop, bottom sheet on mobile */}
       <aside
         ref={sidebarRef}
-        className={`fixed top-0 right-0 z-100 py-4 h-screen w-80 overflow-y-auto bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out overflow-auto ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed z-100 bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out
+          md:top-0 md:right-0 md:h-screen md:w-80 md:overflow-y-auto md:py-4
+          max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:h-[70dvh] max-md:rounded-t-2xl max-md:overflow-y-auto
+          ${
+            isOpen
+              ? "md:translate-x-0 max-md:translate-y-0"
+              : "md:translate-x-full max-md:translate-y-full"
+          }`}
       >
+        {/* Drag handle (mobile only) */}
+        <div className="md:hidden flex justify-center pt-3 pb-1">
+          <div className="w-10 h-1 rounded-full bg-primary/30" />
+        </div>
+
         <div className="p-6 flex flex-col h-full">
           <div className="flex-1">
             <h2 className="text-2xl font-bold mb-6">Create your lamp</h2>
@@ -185,7 +207,6 @@ export default function ConfiguratorSidebar() {
                     }`}
                   >
                     <Image
-                      preload
                       src={`/${woodOption.texture.color}`}
                       alt={woodOption.name}
                       height={48}

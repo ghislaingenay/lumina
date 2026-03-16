@@ -43,7 +43,7 @@ export default function AboutUs() {
       className="relative h-screen w-full overflow-hidden"
     >
       <Image
-        src="/ceiling_lamps.webp"
+        src="/ceiling_lamps.jpg"
         alt="Ceiling Lamps"
         width={800}
         height={600}
