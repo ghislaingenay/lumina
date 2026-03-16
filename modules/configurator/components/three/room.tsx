@@ -1,24 +1,24 @@
 "use client";
 
-import { useGLTF, useKTX2 } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import { useMemo } from "react";
 import * as THREE from "three";
 
 export default function Room() {
   // Load laminate floor textures
-  const laminateFloorTextures = useKTX2({
-    map: "/textures/laminate_floor/laminate_floor_diff_1k.ktx2",
-    normalMap: "/textures/laminate_floor/laminate_floor_nor_gl_1k.ktx2",
-    aoMap: "/textures/laminate_floor/laminate_floor_arm_1k.ktx2",
-    roughnessMap: "/textures/laminate_floor/laminate_floor_arm_1k.ktx2",
+  const laminateFloorTextures = useTexture({
+    map: "/textures/laminate_floor/laminate_floor_diff_1k.jpg",
+    normalMap: "/textures/laminate_floor/laminate_floor_nor_gl_1k.jpg",
+    aoMap: "/textures/laminate_floor/laminate_floor_arm_1k.jpg",
+    roughnessMap: "/textures/laminate_floor/laminate_floor_arm_1k.jpg",
   });
 
   // Load white plaster textures
-  const whitePlasterTextures = useKTX2({
-    map: "/textures/white_plaster/white_plaster_diff_1k.ktx2",
-    normalMap: "/textures/white_plaster/white_plaster_nor_gl_1k.ktx2",
-    aoMap: "/textures/white_plaster/white_plaster_arm_1k.ktx2",
-    roughnessMap: "/textures/white_plaster/white_plaster_arm_1k.ktx2",
+  const whitePlasterTextures = useTexture({
+    map: "/textures/white_plaster/white_plaster_diff_1k.jpg",
+    normalMap: "/textures/white_plaster/white_plaster_nor_gl_1k.jpg",
+    aoMap: "/textures/white_plaster/white_plaster_arm_1k.jpg",
+    roughnessMap: "/textures/white_plaster/white_plaster_arm_1k.jpg",
   });
 
   // Configure textures

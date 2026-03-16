@@ -2,7 +2,7 @@
 
 import { NIGHTSTAND_POSITION } from "@constants/configurator";
 import useLampStore from "@hooks/use_lamp";
-import { Clone, useGLTF, useKTX2 } from "@react-three/drei";
+import { Clone, useGLTF, useTexture } from "@react-three/drei";
 import { useMemo } from "react";
 import { color, float, Fn, mix, texture } from "three/tsl";
 import * as THREE from "three/webgpu";
@@ -14,7 +14,7 @@ export default function Lightstand() {
 
   const model = useGLTF(lamp.model);
 
-  const woodTexture = useKTX2({
+  const woodTexture = useTexture({
     map: wood?.texture.color,
     normalMap: wood?.texture.normal,
     aoMap: wood?.texture.ao,
@@ -42,10 +42,10 @@ export default function Lightstand() {
     lightPositionMap[lamp.id as keyof typeof lightPositionMap] ||
     NIGHTSTAND_POSITION;
 
-  const shadeTexture = useKTX2({
-    map: "/textures/shade/shade_diff_1k.ktx2",
-    normalMap: "/textures/shade/shade_nor_gl_1k.ktx2",
-    aoMap: "/textures/shade/shade_arm_1k.ktx2",
+  const shadeTexture = useTexture({
+    map: "/textures/shade/shade_diff_1k.jpeg",
+    normalMap: "/textures/shade/shade_nor_gl_1k.jpg",
+    aoMap: "/textures/shade/shade_arm_1k.jpg",
   });
 
   const sceneMemo = useMemo(() => {
@@ -204,12 +204,12 @@ export default function Lightstand() {
 useGLTF.preload("/models/treed.glb");
 useGLTF.preload("/models/tuboc.glb");
 useGLTF.preload("/models/japo.glb");
-useKTX2.preload("/textures/woods/plywood/plywood_diff_1k.ktx2");
-useKTX2.preload("/textures/woods/plywood/plywood_nor_gl_1k.ktx2");
-useKTX2.preload("/textures/woods/plywood/plywood_arm_1k.ktx2");
-useKTX2.preload("/textures/woods/linoleum/linoleum_diff_1k.ktx2");
-useKTX2.preload("/textures/woods/linoleum/linoleum_nor_gl_1k.ktx2");
-useKTX2.preload("/textures/woods/linoleum/linoleum_arm_1k.ktx2");
-useKTX2.preload("/textures/shade/shade_diff_1k.ktx2");
-useKTX2.preload("/textures/shade/shade_nor_gl_1k.ktx2");
-useKTX2.preload("/textures/shade/shade_arm_1k.ktx2");
+useTexture.preload("/textures/woods/plywood/plywood_diff_1k.jpg");
+useTexture.preload("/textures/woods/plywood/plywood_nor_gl_1k.jpg");
+useTexture.preload("/textures/woods/plywood/plywood_arm_1k.jpg");
+useTexture.preload("/textures/woods/linoleum/linoleum_diff_1k.jpg");
+useTexture.preload("/textures/woods/linoleum/linoleum_nor_gl_1k.jpg");
+useTexture.preload("/textures/woods/linoleum/linoleum_arm_1k.jpg");
+useTexture.preload("/textures/shade/shade_diff_1k.jpeg");
+useTexture.preload("/textures/shade/shade_nor_gl_1k.jpg");
+useTexture.preload("/textures/shade/shade_arm_1k.jpg");

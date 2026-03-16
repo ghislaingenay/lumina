@@ -4,6 +4,7 @@ import { Leva } from "leva";
 import { Suspense } from "react";
 import { WebGPURendererParameters } from "three/src/renderers/webgpu/WebGPURenderer.Nodes.js";
 import * as THREE from "three/webgpu";
+import { KTX2Loader } from "three/addons/loaders/KTX2Loader.js";
 
 export type ExperienceProviderProps = {
   children: React.ReactNode[] | React.ReactNode;
@@ -20,6 +21,14 @@ export default function Experience({
 }: ExperienceProviderProps) {
   const canvasProps: CanvasProps = {
     shadows: true,
+    onCreated: ({ gl }) => {
+      const ktx2Loader = new KTX2Loader();
+      ktx2Loader.setTranscoderPath("./basis/"); // need basis transcoder files
+      ktx2Loader.detectSupport(gl);
+      if (gl instanceof THREE.WebGPURenderer) {
+        gl.outputColorSpace = THREE.SRGBColorSpace;
+      }
+    },
     dpr: [1, 2],
     camera: {
       fov: 40,
