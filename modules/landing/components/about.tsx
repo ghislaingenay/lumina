@@ -5,37 +5,42 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function AboutUs() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [imageReady, setImageReady] = useState(false);
 
-  useGSAP(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const ceilingLamps = section.querySelector("img") as HTMLImageElement;
-    const h4Element = section.querySelector("h4") as HTMLElement;
+  useGSAP(
+    () => {
+      if (!imageReady) return;
+      const section = sectionRef.current;
+      if (!section) return;
+      const ceilingLamps = section.querySelector("img") as HTMLImageElement;
+      const h4Element = section.querySelector("h4") as HTMLElement;
 
-    const splitText = new SplitText(h4Element, { type: "lines" });
+      const splitText = new SplitText(h4Element, { type: "lines" });
 
-    gsap.set(splitText.lines, { opacity: 0, y: 20 });
+      gsap.set(splitText.lines, { opacity: 0, y: 20 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${section.offsetHeight}`,
-        scrub: 2,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${section.offsetHeight}`,
+          scrub: 2,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
 
-    tl.to(ceilingLamps, { xPercent: 100 }, 0);
-    tl.to(splitText.lines, { opacity: 1, y: 0, stagger: 0.1 }, 0);
-  });
+      tl.to(ceilingLamps, { xPercent: 100 }, 0);
+      tl.to(splitText.lines, { opacity: 1, y: 0, stagger: 0.1 }, 0);
+    },
+    { dependencies: [imageReady] },
+  );
 
   return (
     <section
@@ -48,6 +53,7 @@ export default function AboutUs() {
         width={800}
         height={600}
         priority
+        onLoad={() => setImageReady(true)}
         className="object-cover w-full h-screen absolute inset-0 z-20"
       />
       <div
