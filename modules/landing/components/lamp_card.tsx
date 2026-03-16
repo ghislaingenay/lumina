@@ -116,6 +116,7 @@ export function LampCard({
         <div className="relative ">
           {/* Image - absolute */}
           <Image
+            preload
             width={imageWidth}
             height={imageHeight}
             src={imageSrc}

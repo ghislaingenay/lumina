@@ -47,6 +47,7 @@ export default function AboutUs() {
         alt="Ceiling Lamps"
         width={800}
         height={600}
+        priority
         className="object-cover w-full h-screen absolute inset-0 z-20"
       />
       <div

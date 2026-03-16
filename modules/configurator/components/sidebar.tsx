@@ -185,6 +185,7 @@ export default function ConfiguratorSidebar() {
                     }`}
                   >
                     <Image
+                      preload
                       src={`/${woodOption.texture.color}`}
                       alt={woodOption.name}
                       height={48}

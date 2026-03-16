@@ -62,6 +62,8 @@ export default function LampExample() {
         alt={imageDetails[selectedWood]?.altText ?? "Lamp image"}
         width={200}
         height={200}
+        loading="lazy"
+        preload
         className="object-contain ml-auto w-25 md:w-50"
       />
     </div>

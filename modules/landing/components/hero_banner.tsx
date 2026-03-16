@@ -58,6 +58,7 @@ export default function HeroBanner() {
     >
       {/* Image */}
       <Image
+      preload
         ref={backgroundImageRef}
         src="/landing.webp"
         alt="Landing"
