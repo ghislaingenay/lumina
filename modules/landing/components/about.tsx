@@ -11,15 +11,20 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function AboutUs() {
   const sectionRef = useRef<HTMLElement>(null);
+  const initializedRef = useRef(false); // ✅ Track if animation has played
 
   useGSAP(
     () => {
       const section = sectionRef.current;
-      if (!section) return;
+      if (!section || initializedRef.current) return; // ✅ Skip if already initialized
+
       const ceilingLamps = section.querySelector("img") as HTMLImageElement;
       const h4Element = section.querySelector("h4") as HTMLElement;
 
       const init = () => {
+        if (initializedRef.current) return; // ✅ Double-guard
+        initializedRef.current = true;
+
         const splitText = new SplitText(h4Element, { type: "lines" });
         gsap.set(splitText.lines, { opacity: 0, y: 20 });
 
@@ -38,8 +43,6 @@ export default function AboutUs() {
         tl.to(splitText.lines, { opacity: 1, y: 0, stagger: 0.1 }, 0);
       };
 
-      // If the image is already decoded (cached), start immediately
-      // Otherwise wait for it — no state change, no re-render
       if (ceilingLamps.complete) {
         init();
       } else {
