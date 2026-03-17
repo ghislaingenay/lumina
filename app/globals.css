@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@source "../app";
-@source "../modules";
-@source "../components";
-@source "../providers";
+@source "../app/**/*.{ts,tsx}";
+@source "../modules**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+@source "../providers/**/*.{ts,tsx}";
 
 :root {
   --primary: #fcf6ec;
