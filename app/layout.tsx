@@ -15,7 +15,10 @@ export const metadata: Metadata = {
   title: "Lumina — Handcrafted Wood Lamps",
   description:
     "Discover Lumina's collection of handcrafted wood lamps. Where timeless elegance meets modern illumination. Customize your unique lamp online.",
-  metadataBase: new URL("https://lumina.com"),
+  metadataBase: new URL("https://lumina.redicreate.com"),
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Lumina — Handcrafted Wood Lamps",
     description:
@@ -54,8 +57,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${vogun.variable} antialiased`}>{children}</body>
+    <html lang="en" className={vogun.variable}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

@@ -20,6 +20,7 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     font-size: 16px;
+    -moz-text-size-adjust: 100%;
   }
 
   html,
@@ -35,6 +36,12 @@
   body {
     overflow-x: hidden;
     overflow-y: scroll;
+  }
+
+  @media (max-width: 768px) and (orientation: portrait) {
+    html {
+      font-size: 16px; /* force it explicitly at this breakpoint */
+    }
   }
 }
 
