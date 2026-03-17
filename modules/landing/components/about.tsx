@@ -55,26 +55,24 @@ export default function AboutUs() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-screen w-full px-4 overflow-hidden"
     >
       <Image
         src="/ceiling_lamps.jpg"
         alt="Ceiling Lamps"
-        width={800}
-        height={600}
-        preload
+        width={400}
+        height={300}
+        loading="eager"
         priority
-        className="object-cover w-full h-screen absolute inset-0 z-20 will-change-transform"
+        className="object-contain w-full h-screen absolute inset-0 z-20 will-change-transform"
       />
       <div
         id="presentation"
         className="w-full relative origin-center flex justify-center items-center"
       >
         <div className="max-w-xl space-y-4 px-4 h-screen flex flex-col justify-center">
-          <h3 className="text-center text-2xl md:text-3xl lg:text-4xl">
-            Lumina
-          </h3>
-          <h4 className="text-center text-lg md:text-xl lg:text-2xl">
+          <h3 className="text-center text-lg md:text-2xl">Lumina</h3>
+          <h4 className="text-center text-sm md:text-xl lg:text-2xl">
             Where the timeless elegance of natural wood meets modern
             illumination. Each lamp is a unique piece of functional art,
             handcrafted to bring warmth, character, and a touch of the natural

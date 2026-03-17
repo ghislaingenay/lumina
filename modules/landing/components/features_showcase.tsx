@@ -58,12 +58,16 @@ export default function FeaturesShowcase() {
         {/* Both panels are absolute, stacked on top of each other */}
         <div
           id="story-telling"
-          className="absolute inset-0 max-w-3xl mx-auto w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 px-4"
+          className="absolute inset-0 max-w-3xl mx-auto w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 px-4"
         >
           <div className="md:flex-1">
-            <h3>When the world slows down, the light should soften.</h3>
-            <p>
+            <h3 className="text-base md:text-xl">
+              When the world slows down, the light should soften.
+            </h3>
+            <p className="text-base md:text-xl">
               Not too bright. Not too cold.{" "}
+            </p>
+            <p className="text-base md:text-xl">
               <strong>Just enough to feel at home.</strong>
             </p>
           </div>
@@ -84,10 +88,12 @@ export default function FeaturesShowcase() {
           className="absolute inset-0 max-w-3xl mx-auto w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 px-4 opacity-0"
         >
           <div className="md:flex-1">
-            <h3 className="mb-3 font-bold">
+            <h3 className="mb-3 font-bold text-base md:text-xl">
               No two pieces of wood are identical.
             </h3>
-            <p>Select the wood that matches your space.</p>
+            <p className="text-base md:text-xl">
+              Select the wood that matches your space.
+            </p>
           </div>
           <div className="md:flex-1" id="config-image">
             <LampExample />

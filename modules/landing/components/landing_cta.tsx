@@ -10,11 +10,11 @@ export default function LandingCta() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="relative h-screen w-full grid grid-cols-2 lg:grid-cols-3 py-8 px-4"
+      className="relative size-full md:h-screen  grid grid-cols-2 md:grid-cols-3 gap-3 py-8 px-4"
     >
       {/* Column 1 */}
-      <div className="col-span-1 lg:col-span-2" />
-      <div className="col-span-1 lg:col-span-1 flex items-start gap-3 justify-center">
+      <div className="col-span-1 md:col-span-2" />
+      <div className="col-span-1 md:col-span-1 flex items-start gap-3 justify-center">
         {/* <Link href="/shop" className="text-primary text-sm ms-auto">
           <button className="px-4 py-2 bg-secondary text-primary rounded-lg border border-primary hover:bg-secondary/90 ml-auto">
             Shop now

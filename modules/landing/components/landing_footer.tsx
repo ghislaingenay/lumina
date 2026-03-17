@@ -1,6 +1,6 @@
 export default function LandingFooter() {
   return (
-    <footer className="min-h-[50vh] h-fit bg-secondary text-primary p-8">
+    <footer className="h-fit bg-secondary text-primary p-8">
       <div className="max-w-6xl mx-auto h-full flex flex-col justify-between">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
