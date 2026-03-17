@@ -68,7 +68,7 @@ export default function HeroBanner() {
       />
       <h1
         ref={headingRef}
-        className="max-w-3xl mx-auto text-4xl  md:text-4xl font-bold text-primary mb-4 leading-tight"
+        className="max-w-3xl mx-auto text-4xl  md:text-4xl  lg:text-5xl font-bold text-primary mb-4 leading-tight"
       >
         <span className="block overflow-hidden">Illuminate</span>
         <span className="block overflow-hidden">● Your ●</span>

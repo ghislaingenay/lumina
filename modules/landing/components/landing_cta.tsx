@@ -6,7 +6,7 @@ export default function LandingCta() {
   return (
     <footer
       style={{
-        backgroundImage: "url('/footer.png')",
+        backgroundImage: "url('/lamp-background.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -23,13 +23,7 @@ export default function LandingCta() {
       </div>
       {/* Column 2 */}
       <div className="col-span-2 lg:col-span-1 size-full flex items-end ">
-        <p
-          className="text-primary text-lg"
-          style={{
-            textShadow:
-              "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-          }}
-        >
+        <p className="text-secondary text-xl p-4 border-2 bg-primary rounded-lg opacity-80">
           Bringing warmth into everyday spaces.
         </p>
       </div>
@@ -38,7 +32,7 @@ export default function LandingCta() {
       <div className="col-span-0 lg:col-span-2" />
       <div className="size-full col-span-2 lg:col-span-1 flex items-end gap-3 justify-center">
         <Link href="/configurator" className="text-primary text-sm ms-auto">
-          <button className="px-4 py-2 border border-primary bg-secondary text-primary rounded-lg hover:bg-secondary/90 ml-auto">
+          <button className="px-4 py-2 border cursor-pointer border-primary bg-secondary text-primary rounded-lg hover:bg-secondary/90 ml-auto">
             Customize
           </button>
         </Link>
@@ -47,7 +41,7 @@ export default function LandingCta() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button className="px-4 py-2 bg-primary text-secondary rounded-lg hover:bg-primary/90 border border-secondary">
+          <button className="px-4 py-2 cursor-pointer bg-primary text-secondary rounded-lg hover:bg-primary/90 border border-secondary">
             Contact us
           </button>
         </a>

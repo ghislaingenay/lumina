@@ -39,19 +39,22 @@ export default function Header() {
       className="absolute z-20 top-10 left-0 right-0 px-4 h-fit max-w-3xl mx-auto my-auto opacity-0"
     >
       <nav className="relative flex items-center justify-between">
-        <span className="branding text-primary text-base md:text-base">
+        <span className="branding text-primary text-base md:text-base lg:text-xl">
           Lumina
         </span>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/" className="text-primary text-base md:text-base">
+            <Link
+              href="/"
+              className="text-primary text-base md:text-base lg:text-xl"
+            >
               Home
             </Link>
           </li>
           <li>
             <Link
               href="/configurator"
-              className="text-primary text-base md:text-base"
+              className="text-primary text-base md:text-base lg:text-xl"
             >
               Configurator
             </Link>
