@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import LandscapeOverlay from "@components/landscape_overlay";
 
 const vogun = localFont({
   src: [
@@ -58,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={vogun.variable}>
       <body className="antialiased">
-        {/* <LandscapeOverlay /> */}
+        <LandscapeOverlay />
         {children}
       </body>
     </html>
