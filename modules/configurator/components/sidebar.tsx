@@ -29,7 +29,7 @@ export default function ConfiguratorSidebar() {
       {/* Toggle Button — top-right on desktop, bottom-center on mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed z-80 cursor-pointer bg-secondary text-primary shadow-lg hover:opacity-90 transition-opacity
+        className="fixed z-[80] cursor-pointer bg-secondary text-primary shadow-lg hover:opacity-90 transition-opacity
           top-4 right-4 px-4 py-2 rounded-lg
           md:top-4 md:right-4 md:rounded-lg md:px-4 md:py-2
           max-md:bottom-4 max-md:left-1/2 max-md:-translate-x-1/2 max-md:top-auto max-md:right-auto max-md:rounded-full max-md:px-6 max-md:py-3 max-md:flex max-md:items-center max-md:gap-2"
@@ -60,7 +60,7 @@ export default function ConfiguratorSidebar() {
       {/* Backdrop (mobile only) */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-90 bg-black/40 md:hidden"
+          className="fixed inset-0 z-[90] bg-black/40 md:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -68,7 +68,7 @@ export default function ConfiguratorSidebar() {
       {/* Sidebar Panel — right drawer on desktop, bottom sheet on mobile */}
       <aside
         ref={sidebarRef}
-        className={`fixed z-100 bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out
+        className={`fixed z-[100] bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out
           md:top-0 md:right-0 md:h-screen md:w-80 md:overflow-y-auto md:py-4
           max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:h-[70dvh] max-md:rounded-t-2xl max-md:overflow-y-auto
           ${
@@ -228,7 +228,7 @@ export default function ConfiguratorSidebar() {
             </div>
 
             {/* Current Selection Summary */}
-            <div className="mb-4 p-4 bg-primary text-secondary bg-opacity-5 rounded-lg">
+            <div className="mb-4 p-4 bg-primary text-secondary rounded-lg">
               <h3 className="text-sm font-semibold mb-2">Current Selection</h3>
               <p className="text-xs">
                 Color: {color ? color.name : "Not selected"}
