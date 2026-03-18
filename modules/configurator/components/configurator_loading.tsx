@@ -28,10 +28,10 @@ export default function ConfiguratorLoading() {
   return (
     <div
       ref={ref}
-      className="fixed z-999 top-0 left-0 w-full h-full bg-primary"
+      className="fixed z-[999] top-0 left-0 w-full h-full bg-primary"
     >
       <div className="relative flex items-center justify-center w-full h-full">
-        <div className="grid gap-3 p-4 bg-primary w-75 h- rounded-lg shadow-lg">
+        <div className="grid gap-3 p-4 bg-primary w-[300px] h- rounded-lg shadow-lg">
           <p className="text-sm font-medium text-gray-700">Loading...</p>
           <div className="w-full h-2 bg-gray-200 rounded-full">
             <div
