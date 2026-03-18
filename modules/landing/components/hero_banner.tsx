@@ -54,7 +54,7 @@ export default function HeroBanner() {
   return (
     <section
       ref={sectionRef}
-      className="relative text-center pt-18 min-h-screen flex items-center justify-center flex-col gap-4 invisible"
+      className="relative text-center pt-[4.5rem] min-h-screen flex items-center justify-center flex-col gap-4 invisible"
     >
       {/* Image */}
       <Image
@@ -64,7 +64,7 @@ export default function HeroBanner() {
         alt="Landing"
         width={200}
         height={200}
-        className="mx-auto size-full absolute inset-0 brightness-25 object-cover -z-40"
+        className="mx-auto size-full absolute inset-0 brightness-50 object-cover -z-40"
       />
       <h1
         ref={headingRef}

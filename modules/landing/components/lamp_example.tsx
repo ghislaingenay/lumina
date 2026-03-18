@@ -63,7 +63,7 @@ export default function LampExample() {
         width={200}
         height={200}
         preload
-        className="object-contain ml-auto w-25 md:w-50"
+        className="object-contain ml-auto w-[6.25rem] md:w-[12.5rem]"
       />
     </div>
   );
