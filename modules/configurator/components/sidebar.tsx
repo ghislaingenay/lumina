@@ -4,11 +4,14 @@ import useLampStore from "@/hooks/use_lamp";
 import lamps from "@/lib/constants/lamp";
 import paints from "@/lib/constants/paints";
 import woods from "@/lib/constants/woods";
+import useIsMobile from "@hooks/use_mobile";
 import { useOutsideClick } from "@hooks/use_outside_click";
+import clsx from "clsx";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
 export default function ConfiguratorSidebar() {
+  const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const { lamp, color, wood, setLampColor, setLampWood, setLamp } =
@@ -29,10 +32,12 @@ export default function ConfiguratorSidebar() {
       {/* Toggle Button — top-right on desktop, bottom-center on mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed z-[80] cursor-pointer bg-secondary text-primary shadow-lg hover:opacity-90 transition-opacity
-          top-4 right-4 px-4 py-2 rounded-lg
-          md:top-4 md:right-4 md:rounded-lg md:px-4 md:py-2
-          max-md:bottom-4 max-md:left-1/2 max-md:-translate-x-1/2 max-md:top-auto max-md:right-auto max-md:rounded-full max-md:px-6 max-md:py-3 max-md:flex max-md:items-center max-md:gap-2"
+        className={clsx(
+          "fixed z-[80] cursor-pointer bg-secondary text-primary shadow-lg hover:opacity-90 transition-opacity",
+          isMobile
+            ? "bottom-4 left-1/2 -translate-x-1/2 rounded-full px-6 py-3 flex items-center gap-2"
+            : "top-4 right-4 px-4 py-2 rounded-lg",
+        )}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,13 +59,13 @@ export default function ConfiguratorSidebar() {
             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
           />
         </svg>
-        <span className="md:hidden text-sm font-semibold">Customize</span>
+        {isMobile && <span className="text-sm font-semibold">Customize</span>}
       </button>
 
       {/* Backdrop (mobile only) */}
-      {isOpen && (
+      {isOpen && isMobile && (
         <div
-          className="fixed inset-0 z-[90] bg-black/40 md:hidden"
+          className="fixed inset-0 z-[90] bg-black/40"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -68,19 +73,26 @@ export default function ConfiguratorSidebar() {
       {/* Sidebar Panel — right drawer on desktop, bottom sheet on mobile */}
       <aside
         ref={sidebarRef}
-        className={`fixed z-[100] bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out
-          md:top-0 md:right-0 md:h-screen md:w-80 md:overflow-y-auto md:py-4
-          max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:h-[70dvh] max-md:rounded-t-2xl max-md:overflow-y-auto
-          ${
-            isOpen
-              ? "md:translate-x-0 max-md:translate-y-0"
-              : "md:translate-x-full max-md:translate-y-full"
-          }`}
+        className={clsx(
+          "fixed z-[100] bg-secondary text-primary shadow-2xl transform transition-transform duration-300 ease-in-out",
+          isMobile
+            ? "bottom-0 left-0 right-0 h-[70dvh] rounded-t-2xl overflow-y-auto"
+            : "top-0 right-0 h-screen w-80 overflow-y-auto py-4",
+          isOpen
+            ? isMobile
+              ? "translate-y-0"
+              : "translate-x-0"
+            : isMobile
+              ? "translate-y-full"
+              : "translate-x-full",
+        )}
       >
         {/* Drag handle (mobile only) */}
-        <div className="md:hidden flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 rounded-full bg-primary/30" />
-        </div>
+        {isMobile && (
+          <div className="flex justify-center pt-3 pb-1">
+            <div className="w-10 h-1 rounded-full bg-primary/30" />
+          </div>
+        )}
 
         <div className="p-6 flex flex-col h-full">
           <div className="flex-1">
