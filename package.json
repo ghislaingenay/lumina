@@ -29,6 +29,7 @@
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "next-sitemap": "^4.2.3",
+    "postcss-preset-env": "^11.2.0",
     "postprocessing": "^6.38.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
