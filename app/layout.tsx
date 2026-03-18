@@ -2,6 +2,7 @@ import LandscapeOverlay from "@/components/landscape_overlay";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import LandscapeOverlay from "@components/landscape_overlay";
 
 const vogun = localFont({
   src: [

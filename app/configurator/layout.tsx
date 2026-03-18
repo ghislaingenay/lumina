@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import NoScroll from "./no-scroll";
 
 export const metadata: Metadata = {
@@ -9,12 +9,6 @@ export const metadata: Metadata = {
   },
   description:
     "Customize your handcrafted wood lamp. Choose your model, wood material, and varnish color to create a unique piece tailored to your space.",
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
 };
 
 export default function ConfiguratorLayout({
