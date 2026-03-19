@@ -1,3 +1,4 @@
+import LandscapeOverlay from "@components/landscape_overlay";
 import About from "./components/about";
 import FeaturesShowcase from "./components/features_showcase";
 import Header from "./components/header";
@@ -10,6 +11,7 @@ import LandingExperience from "./landing_experience";
 export default function LandingModule() {
   return (
     <div className="relative h-screen w-full">
+      <LandscapeOverlay />
       <LandingExperience />
 
       <Header />
