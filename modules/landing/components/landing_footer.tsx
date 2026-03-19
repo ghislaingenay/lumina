@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function LandingFooter() {
   return (
     <footer className="h-fit bg-secondary text-primary p-8">
@@ -17,19 +19,14 @@ export default function LandingFooter() {
           <div className="space-y-4 col-span-1">
             <h4 className="text-lg font-medium">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#home" className="hover:opacity-75 transition-opacity">
-                  Home
-                </a>
-              </li>
               {/* <li><a href="#about" className="hover:opacity-75 transition-opacity">About</a></li> */}
               <li>
-                <a
-                  href="#playground"
+                <Link
+                  href="/configurator"
                   className="hover:opacity-75 transition-opacity"
                 >
                   Configurator
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

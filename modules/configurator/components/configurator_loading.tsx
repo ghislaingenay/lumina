@@ -10,7 +10,6 @@ export default function ConfiguratorLoading() {
 
   useEffect(() => {
     if (!ref.current) return;
-    console.log("Loading complete", progress);
     if (progress === 100) {
       const tl = gsap.timeline();
       tl.to(ref.current, {
