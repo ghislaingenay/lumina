@@ -3,9 +3,21 @@
 import { NIGHTSTAND_POSITION } from "@constants/configurator";
 import useLampStore from "@hooks/use_lamp";
 import { Clone, useGLTF, useTexture } from "@react-three/drei";
+import woods from "@/lib/constants/woods";
 import { useMemo } from "react";
 import { color, float, Fn, mix, texture } from "three/tsl";
 import * as THREE from "three/webgpu";
+
+// Build a flat texture-path record for all woods upfront (outside component to be stable)
+const allWoodTexturePaths = woods.reduce(
+  (acc, w) => {
+    acc[`${w.id}_map`] = w.texture.color;
+    acc[`${w.id}_normalMap`] = w.texture.normal;
+    acc[`${w.id}_aoMap`] = w.texture.ao;
+    return acc;
+  },
+  {} as Record<string, string>,
+);
 
 export default function Lightstand() {
   const lamp = useLampStore((store) => store.lamp);
@@ -14,11 +26,19 @@ export default function Lightstand() {
 
   const model = useGLTF(lamp.model);
 
-  const woodTexture = useTexture({
-    map: wood?.texture.color,
-    normalMap: wood?.texture.normal,
-    aoMap: wood?.texture.ao,
-  });
+  // All wood textures are loaded at once — switching woods never triggers a network load
+  const allWoodTextures = useTexture(allWoodTexturePaths);
+  const woodTexture = useMemo(
+    () =>
+      wood
+        ? {
+            map: allWoodTextures[`${wood.id}_map`] as THREE.Texture,
+            normalMap: allWoodTextures[`${wood.id}_normalMap`] as THREE.Texture,
+            aoMap: allWoodTextures[`${wood.id}_aoMap`] as THREE.Texture,
+          }
+        : null,
+    [wood, allWoodTextures],
+  );
 
   const lightPositionMap = {
     treed: new THREE.Vector3(
@@ -50,12 +70,7 @@ export default function Lightstand() {
 
   const sceneMemo = useMemo(() => {
     const clonedScene = model.scene.clone(true);
-    if (!woodTexture.map || !woodTexture.normalMap || !woodTexture.aoMap) {
-      console.warn("Wood texture maps are not fully loaded.");
-      return clonedScene;
-    }
-    if (!shadeTexture.map || !shadeTexture.normalMap || !shadeTexture.aoMap) {
-      console.warn("Shade texture maps are not fully loaded.");
+    if (!woodTexture?.map || !woodTexture.normalMap || !woodTexture.aoMap) {
       return clonedScene;
     }
 
@@ -104,7 +119,7 @@ export default function Lightstand() {
         } else {
           child.castShadow = true;
           child.receiveShadow = false;
-          const woodColorTexture = woodTexture.map.clone();
+          const woodColorTexture = woodTexture!.map.clone();
           woodColorTexture.wrapS = THREE.RepeatWrapping;
           woodColorTexture.wrapT = THREE.RepeatWrapping;
           woodColorTexture.colorSpace = THREE.SRGBColorSpace;
@@ -112,14 +127,14 @@ export default function Lightstand() {
           woodColorTexture.needsUpdate = true;
 
           // Clone normal map to avoid sharing wrap settings with other meshes
-          const woodNormalTexture = woodTexture.normalMap.clone();
+          const woodNormalTexture = woodTexture!.normalMap.clone();
           woodNormalTexture.wrapS = THREE.RepeatWrapping;
           woodNormalTexture.wrapT = THREE.RepeatWrapping;
           woodNormalTexture.repeat.set(1, 1);
           woodNormalTexture.needsUpdate = true;
 
           // Clone ao/roughness/metalness map
-          const woodAoTexture = woodTexture.aoMap.clone();
+          const woodAoTexture = woodTexture!.aoMap.clone();
           woodAoTexture.wrapS = THREE.RepeatWrapping;
           woodAoTexture.wrapT = THREE.RepeatWrapping;
           woodAoTexture.repeat.set(1, 1);
@@ -136,8 +151,8 @@ export default function Lightstand() {
                 return mix(color(paint.color), woodColor, 0.8);
               })()
             : Fn(() => texture(woodColorTexture))();
-          material.normalNode = Fn(() => texture(woodTexture.normalMap))();
-          material.aoNode = Fn(() => texture(woodTexture.aoMap))();
+          material.normalNode = Fn(() => texture(woodTexture!.normalMap))();
+          material.aoNode = Fn(() => texture(woodTexture!.aoMap))();
 
           // ARM texture: R = AO, G = Roughness, B = Metalness
           material.aoNode = Fn(() => texture(woodAoTexture).r)();
@@ -204,12 +219,11 @@ export default function Lightstand() {
 useGLTF.preload("/models/treed.glb");
 useGLTF.preload("/models/tuboc.glb");
 useGLTF.preload("/models/japo.glb");
-useTexture.preload("/textures/woods/plywood/plywood_diff_1k.jpg");
-useTexture.preload("/textures/woods/plywood/plywood_nor_gl_1k.jpg");
-useTexture.preload("/textures/woods/plywood/plywood_arm_1k.jpg");
-useTexture.preload("/textures/woods/linoleum/linoleum_diff_1k.jpg");
-useTexture.preload("/textures/woods/linoleum/linoleum_nor_gl_1k.jpg");
-useTexture.preload("/textures/woods/linoleum/linoleum_arm_1k.jpg");
+woods.forEach((w) => {
+  useTexture.preload(w.texture.color);
+  useTexture.preload(w.texture.normal);
+  useTexture.preload(w.texture.ao);
+});
 useTexture.preload("/textures/shade/shade_diff_1k.jpeg");
 useTexture.preload("/textures/shade/shade_nor_gl_1k.jpg");
 useTexture.preload("/textures/shade/shade_arm_1k.jpg");
