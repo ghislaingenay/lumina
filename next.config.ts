@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  reactStrictMode: true,
   /* config options here */
   experimental: {
     // If @components resolves to an index.ts barrel, the "use client" directive on landscape_overlay.tsx
