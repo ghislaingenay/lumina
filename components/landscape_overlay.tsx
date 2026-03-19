@@ -1,5 +1,3 @@
-"use client";
-
 function LandscapeOverlay() {
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-secondary text-primary p-8 portrait:flex landscape:hidden !md:hidden">
